@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Ninja's Clock</title>
+  </head>
+  <body>
+    <div id="container">
+      <!-- Nav -->
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid d-flex justify-content-center">
+          <a class="navbar-brand" href="#">Ninja's Alarm Clock</a>
+        </div>
+      </nav>
+      <div
+        class="card text-white bg-light mb-3 m-auto mt-5"
+        style="width: 60%; height: 80%"
+      >
+        <div class="row w-auto">
+          <div class="mt-5">
+            <div class="text-center">
+              <div class="clock"><h1 id="clock">00:00:00 AM</h1></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row w-auto time">
+          <div class="d-flex mt-5 align-items-end gap-3 justify-content-center">
+            <form class="d-flex gap-2">
+              <div class=" ">
+                <label for="hours">Hours:</label>
+                <select
+                  class="form-select"
+                  name="hours"
+                  id="hours"
+                  required
+                ></select>
+              </div>
+              <div class="">
+                <label for="minutes">Minutes:</label>
+                <select
+                  class="form-select"
+                  required
+                  name="minutes"
+                  id="minutes"
+                ></select>
+              </div>
+              <div class="">
+                <label for="seconds">Seconds:</label>
+                <select
+                  class="form-select"
+                  required
+                  name="seconds"
+                  id="seconds"
+                ></select>
+              </div>
+              <div class="">
+                <label for="ampm">AM/PM:</label>
+                <select class="form-select" id="ampm">
+                  <option value="AM">AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+            </form>
+            <div class="time-picker">
+              <button class="btn btn-primary" id="getTime">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-alarm-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"
+                  />
+                </svg>
+                Set Alarm
+              </button>
+            </div>
+            <div class="alarm-stop flex-d align-items-center">
+              <button class="btn btn-primary" id="stopAlarm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-slash-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.646-2.646a.5.5 0 0 0-.708-.708l-6 6a.5.5 0 0 0 .708.708l6-6z"
+                  />
+                </svg>
+                Stop Alarm
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row w-auto">
+          <div
+            class="d-flex flex-column mt-5 align-items-center justify-content-center"
+            id="alarmList"
+          >
+            <p class="black">List Of Alarms</p>
+            <div
+              class="alarms-container align-items-end justify-content-center"
+              id="alarms-container"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="alarm.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

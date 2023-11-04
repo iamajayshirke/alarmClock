@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#container{
+    background-color: rgb(244, 240, 240);
+    height: 100vh;
+}
+.clock {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+}
+.time{
+    color: black;
+}
+.black{
+    color: black;
+}
+.custom-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
