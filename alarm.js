@@ -1,3 +1,4 @@
+// Declaration Of Variables According to Requirements
 const setHours = document.querySelector("#hours");
 const setMinutes = document.querySelector("#minutes");
 const setSeconds = document.querySelector("#seconds");
@@ -7,8 +8,11 @@ const alarmRing = new Audio("./assets/sounds/alarmClock.mp3");
 document.getElementById("stopAlarm").addEventListener("click", stopAlarm);
 document.getElementById("getTime").addEventListener("click", setAlarm);
 var alarm_list = []
+
+
 // Update the clock every second
 setInterval(tickTok, 1000);
+
 // TickTok Function is Returning Current Time
 function tickTok() {
   const clockElement = document.getElementById("clock");
@@ -38,6 +42,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   dropDownMenu(0, 59, setMinutes);
   dropDownMenu(0, 59, setSeconds);
 });
+
 // Dropdown Function using for loop For Selecting Hrs, Mins and Seconds
 function dropDownMenu(start, end, element) {
   for (let i = start; i <= end; i++) {
@@ -67,6 +72,7 @@ function setAlarm() {
     }
   },1000);
 
+  // After Setting Alarm in Array Adding div to html 
   const alarms = document.createElement("div");
   alarmContainer.prepend(alarms);
   alarms.classList.add(
@@ -84,8 +90,8 @@ function setAlarm() {
   `;
   const deleteButton = alarms.querySelector(".delete-alarm");
   deleteButton.addEventListener("click", (e) => deleteAlarm(e));
-  
 }
+
 // Deleting the Alarm from List on Click of Delete Button
 function deleteAlarm(event) {
   let selectedAlarm = event.target.parentElement.children[0].innerHTML
@@ -94,6 +100,7 @@ function deleteAlarm(event) {
   alarm.remove();
   alarm_list.pop(selectedAlarm)
 }
+// Made Function For Stopping Music but as we using only Alert Function 
 function stopAlarm() {
-  alarmRing.pause();
+  // alarmRing.pause();
 }
