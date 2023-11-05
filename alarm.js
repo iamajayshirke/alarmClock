@@ -1,15 +1,15 @@
-document.getElementById("getTime").addEventListener("click", setAlarm);
 const setHours = document.querySelector("#hours");
 const setMinutes = document.querySelector("#minutes");
 const setSeconds = document.querySelector("#seconds");
+const setAmPm = document.querySelector("#ampm");
 const alarmContainer = document.querySelector("#alarms-container");
-const list = document.getElementById("alarmList");
 const alarmRing = new Audio("./assets/sounds/alarmClock.mp3");
 document.getElementById("stopAlarm").addEventListener("click", stopAlarm);
-
+document.getElementById("getTime").addEventListener("click", setAlarm);
+var alarm_list = []
 // Update the clock every second
 setInterval(tickTok, 1000);
-
+// TickTok Function is Returning Current Time
 function tickTok() {
   const clockElement = document.getElementById("clock");
   let date = new Date();
@@ -49,20 +49,26 @@ function dropDownMenu(start, end, element) {
 }
 // Alarm Setter Functionality
 function setAlarm() {
-  const hours = document.getElementById("hours").value;
-  const minutes = document.getElementById("minutes").value;
-  const seconds = document.getElementById("seconds").value;
-  const ampm = document.getElementById("ampm").value;
+  const hours = setHours.value;
+  const minutes = setMinutes.value;
+  const seconds = setSeconds.value;
+  const ampm = setAmPm.value;
   let time = `${hours}:${minutes}:${seconds} ${ampm}`;
+  alarm_list.push(time)
+  console.log(alarm_list)
   const intervalId = setInterval(() => {
-    if (time === tickTok()) {
-      alarmRing.play();
-      alarmRing.loop = true;
+    for(let i = 0;i<= alarm_list.length;i++){
+      if (alarm_list[i] === tickTok()) {
+        alert(`Alarm Wake Up`)
+        alarm_list.pop(i)
+        // alarmRing.play();
+        // alarmRing.loop = true;
+      }
     }
-  }, 500);
+  },1000);
 
-  //console.log("Alarm Set", alarms.map(e=>e.time));
   const alarms = document.createElement("div");
+  alarmContainer.prepend(alarms);
   alarms.classList.add(
     "alarms",
     "mb",
@@ -70,7 +76,6 @@ function setAlarm() {
     "justify-content-center",
     "align-items-center"
   );
-
   alarms.innerHTML = `
   <div class="alarm-list d-flex my-2">
   <h2 class="alarm-title me-3 time">${time}</h2>
@@ -79,13 +84,15 @@ function setAlarm() {
   `;
   const deleteButton = alarms.querySelector(".delete-alarm");
   deleteButton.addEventListener("click", (e) => deleteAlarm(e));
-  alarmContainer.prepend(alarms);
+  
 }
 // Deleting the Alarm from List on Click of Delete Button
 function deleteAlarm(event) {
+  let selectedAlarm = event.target.parentElement.children[0].innerHTML
   const self = event.target;
   const alarm = self.parentElement;
   alarm.remove();
+  alarm_list.pop(selectedAlarm)
 }
 function stopAlarm() {
   alarmRing.pause();
